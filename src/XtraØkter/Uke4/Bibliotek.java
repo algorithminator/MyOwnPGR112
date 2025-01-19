@@ -11,8 +11,11 @@ public class Bibliotek {
     private ArrayList<BibliotekBestand> boekerLedig = new ArrayList<>(EnumSet.allOf(BibliotekBestand.class));
     private ArrayList<BibliotekBestand>  boekerUtlaan = new ArrayList<>();
 
+
+
     public ArrayList<BibliotekBestand> getBoekerLedig() {
-        return boekerLedig;
+        System.out.println("Bergen Bibliotek ledige boeker:"+ this.boekerLedig);
+        return this.boekerLedig;
     }
 
     public void returnerBok(BibliotekBestand bibBok) {
@@ -21,39 +24,30 @@ public class Bibliotek {
     }
 
     public ArrayList<BibliotekBestand> getBoekerUtlaan() {
-        return boekerUtlaan;
+        System.out.println("Bergen Bibliotek utlaante boeker: "  + this.boekerUtlaan);
+        return this.boekerUtlaan;
     }
 
     public boolean laanBok(BibliotekBestand bibBok) {
-        if (this.boekerLedig.contains(bibBok)) {
+        if (this.soekLedigBook(bibBok)) {
             this.boekerLedig.remove(bibBok);
             this.boekerUtlaan.add(bibBok);
+
         return true;
         }
         else {
-            System.out.println("Bok " + bibBok + " er ikke ledig.");
+            System.out.println("Bok " + bibBok + " kan ikke laanes.");
             return false;
         }
     }
-
-    public static void main(String[] args) {
-
-        Bibliotek bergenFolkeBib = new Bibliotek();
-
-        System.out.println("Bergen Bibliotek ledige boeker:"+ bergenFolkeBib.getBoekerLedig());
-        System.out.println("Bergen Bibliotek utlaante boeker: "+bergenFolkeBib.getBoekerUtlaan());
-        bergenFolkeBib.laanBok(BibliotekBestand.MOMO);
-        System.out.println("Bergen Bibliotek utlaante boeker: "+bergenFolkeBib.getBoekerUtlaan());
-        bergenFolkeBib.laanBok(BibliotekBestand.KARDEMOMMEBY);
-        System.out.println("Bergen Bibliotek utlaante boeker: "+bergenFolkeBib.getBoekerUtlaan());
-        bergenFolkeBib.laanBok(BibliotekBestand.MOMO);
-        System.out.println("Bergen Bibliotek utlaante boeker: "+bergenFolkeBib.getBoekerUtlaan());
-
-
-
-        //for(var ledig: bergenFolkeBib.getBoekerUtlaan())
-        //    System.out.print(" " + ledig);
-
+    public boolean soekLedigBook(BibliotekBestand bibBok){
+        boolean erLedig = false;
+        for(var b: this.boekerLedig)
+            if(bibBok == b) erLedig = true;
+        System.out.println(bibBok + " er ledig: " + erLedig);
+        return erLedig;
 
     }
+
+
 }
