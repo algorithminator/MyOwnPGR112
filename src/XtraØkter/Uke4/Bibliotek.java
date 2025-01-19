@@ -1,16 +1,21 @@
 package XtraØkter.Uke4;
 
 import java.util.ArrayList;
-import java.util.EnumSet;
+
 
 public class Bibliotek {
     /*
     Utfordring : Inisialiser Biblioteksobjekt med ALLE bøker fra bestand
     https://www.baeldung.com/java-enum-values-to-list#using-the-enumsetallof-method
      */
-    private ArrayList<BibliotekBestand> boekerLedig = new ArrayList<>(EnumSet.allOf(BibliotekBestand.class));
+    private ArrayList<BibliotekBestand> boekerLedig = new ArrayList<>();
     private ArrayList<BibliotekBestand>  boekerUtlaan = new ArrayList<>();
 
+    public Bibliotek(){
+        for (var boeker : BibliotekBestand.values())
+            this.boekerLedig.add(boeker);
+
+    }
 
 
     public ArrayList<BibliotekBestand> getBoekerLedig() {
