@@ -6,6 +6,8 @@ public class testBibliotek {
 
         Bibliotek bergenFolkeBib = new Bibliotek();
         bergenFolkeBib.getBoekerLedig();
+        bergenFolkeBib.initBibliotek();
+        bergenFolkeBib.getBoekerLedig();
         bergenFolkeBib.laanBok(BibliotekBestand.MOMO);
         bergenFolkeBib.laanBok(BibliotekBestand.KARDEMOMMEBY);
         bergenFolkeBib.laanBok(BibliotekBestand.MOMO);
@@ -18,7 +20,7 @@ public class testBibliotek {
 
 
         Bibliotek fyllingsdalenBib = new Bibliotek();
-
+        fyllingsdalenBib.initBibliotek();
         fyllingsdalenBib.laanBok(BibliotekBestand.MOMO);
         fyllingsdalenBib.laanBok(BibliotekBestand.MOMO);
 

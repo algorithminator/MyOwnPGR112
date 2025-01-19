@@ -11,11 +11,12 @@ public class Bibliotek {
     private ArrayList<BibliotekBestand> boekerLedig = new ArrayList<>();
     private ArrayList<BibliotekBestand>  boekerUtlaan = new ArrayList<>();
 
-    public Bibliotek(){
+    public void initBibliotek(){
         for (var boeker : BibliotekBestand.values())
             this.boekerLedig.add(boeker);
 
     }
+
 
 
     public ArrayList<BibliotekBestand> getBoekerLedig() {
