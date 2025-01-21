@@ -8,6 +8,16 @@ public class Bibliotek {
     Utfordring : Inisialiser Biblioteksobjekt med ALLE bøker fra bestand
     https://www.baeldung.com/java-enum-values-to-list#using-the-enumsetallof-method
      */
+    private  String bibNavn;
+
+    public String getBibNavn() {
+        return bibNavn;
+    }
+
+    public void setBibNavn(String bibNavn) {
+        this.bibNavn = bibNavn;
+    }
+
     private ArrayList<BibliotekBestand> boekerLedig = new ArrayList<>();
     private ArrayList<BibliotekBestand>  boekerUtlaan = new ArrayList<>();
 
@@ -24,28 +34,41 @@ public class Bibliotek {
         return this.boekerLedig;
     }
 
-    public void returnerBok(BibliotekBestand bibBok) {
-        this.boekerLedig.add(bibBok);
-        this.boekerUtlaan.remove(bibBok);
-    }
 
     public ArrayList<BibliotekBestand> getBoekerUtlaan() {
         System.out.println("Bergen Bibliotek utlaante boeker: "  + this.boekerUtlaan);
         return this.boekerUtlaan;
     }
 
+
     public boolean laanBok(BibliotekBestand bibBok) {
-        if (this.soekLedigBook(bibBok)) {
+        //if (this.soekLedigBook(bibBok)) {
+        if(this.boekerLedig.contains(bibBok)){
             this.boekerLedig.remove(bibBok);
             this.boekerUtlaan.add(bibBok);
 
         return true;
         }
         else {
-            System.out.println("Bok " + bibBok + " kan ikke laanes.");
+            System.out.printf("Bok %s kan ikke laanes.\n", bibBok);
             return false;
         }
     }
+    public boolean returnerBok(BibliotekBestand bibBok, String navnArg) {
+        if(this.boekerUtlaan.contains(bibBok) && this.getBibNavn().equals(navnArg)){
+            this.boekerLedig.add(bibBok);
+            this.boekerUtlaan.remove(bibBok);
+
+            return true;
+        }
+        else {
+            System.out.printf("Bok %s kan ikke returneres til bibliotek %s.\n", bibBok, navnArg);
+            return false;
+        }
+    }
+    //public boolean laanBok2(BibliotekBestand bibBok) {
+    //return false;
+    //}
     public boolean soekLedigBook(BibliotekBestand bibBok){
         boolean erLedig = false;
         for(var b: this.boekerLedig)
