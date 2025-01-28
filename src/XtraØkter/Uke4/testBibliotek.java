@@ -40,7 +40,15 @@ public class testBibliotek {
         fyllingsdalenBib.laanBok(BibliotekBestand.HOBBITEN);
         fyllingsdalenBib.returnerBok(BibliotekBestand.MOMO, "Fyllingsdalen Bibliotek");
 
+        System.out.println(fyllingsdalenBib.getBibNavn());
 
+        BibOmdøper daNuBib = new BibOmdøper();
+        daNuBib.renameBib(fyllingsdalenBib);
+        System.out.println(fyllingsdalenBib.getBibNavn());
+
+        var x = 4;
+        System.out.println(daNuBib.myBibMath(x));
+        System.out.println(x);
 
     }
 }
