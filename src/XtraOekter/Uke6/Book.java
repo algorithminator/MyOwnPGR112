@@ -38,9 +38,9 @@ public class Book {
         this.genre = genre;
     }
 
-    //public void printMe() {
-    //    System.out.println(this);
-    //}
+    public void printMe() {
+        System.out.println(this);
+    }
 
     @Override
     public String toString() {
