@@ -13,4 +13,28 @@ public class BookRegister {
         return this.registeredBooks.size();
     }
 
+     public void allBooksInRegister(){
+             for (Book b :
+                     this.registeredBooks) {
+                 System.out.println(b.toString());
+             }
+     }
+     public void booksByGenre(Genre genre){
+             for (Book b :
+                     this.registeredBooks) {
+                 if(b.getGenre() == genre){
+                     System.out.println(b.toString());
+                 }
+             }
+     }
+     public void booksByAuthor(String author){
+             for (Book b :
+                     this.registeredBooks) {
+                 if(b.getAuthor().equals(author)){
+                     System.out.println(b.toString());
+                 }
+             }
+     }
+
+
 }

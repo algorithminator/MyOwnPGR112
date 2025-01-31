@@ -22,5 +22,25 @@ public class Main {
         b.printMe();
         br.addBook(b);
         System.out.println("Antall books in my Bookregister:" + br.countRegisteredBooks());
+        //F
+        br.allBooksInRegister();
+        br.booksByGenre(Genre.CLASSIC);
+        System.out.println("Testing by FANTASY");
+        br.booksByGenre(Genre.FANTASY);
+        System.out.println("Books by Hamsun:");
+        br.booksByAuthor("Knut Hamsun");
+        System.out.println("Books by blabla:");
+        br.booksByAuthor("blabla");
+
+
+
+
+
+
+
+
+
+
+
     }
 }
