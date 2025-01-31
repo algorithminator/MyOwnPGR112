@@ -1,6 +1,6 @@
-package XtraØkter.Uke4;
+package XtraOekter.Uke4;
 
-public class BibOmdøper {
+public class BibOmdoeper {
 
     public void renameBib(Bibliotek bib){
         bib.setBibNavn("Dis a funky bib, yo");
