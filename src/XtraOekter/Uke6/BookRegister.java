@@ -36,5 +36,20 @@ public class BookRegister {
              }
      }
 
+     public ArrayList<Book> getBooksWithLessTimeToRead (int maxTime){
+
+        ArrayList<Book> shortBooks = new ArrayList<>();
+        for(var b : this.registeredBooks){
+                int totalTimeReading = 0;
+                for (var c : b.getChapters()){
+                    totalTimeReading += c.getTimeReading();
+                }
+
+                if (totalTimeReading > 0 && totalTimeReading < maxTime)
+                    shortBooks.add(b);
+        }
+
+        return shortBooks ;
+     }
 
 }

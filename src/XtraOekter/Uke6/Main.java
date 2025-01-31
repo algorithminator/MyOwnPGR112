@@ -48,6 +48,9 @@ public class Main {
         br.booksByAuthor("blabla");
 
 
+        System.out.println( "Short books: "+ br.getBooksWithLessTimeToRead(10));
+        System.out.println( "Short books: "+ br.getBooksWithLessTimeToRead(9));
+
 
 
 
