@@ -1,4 +1,4 @@
-package XtraØkter.Uke4;
+package XtraOekter.Uke4;
 
 import java.util.ArrayList;
 
@@ -42,7 +42,7 @@ public class testBibliotek {
 
         System.out.println(fyllingsdalenBib.getBibNavn());
 
-        BibOmdøper daNuBib = new BibOmdøper();
+        BibOmdoeper daNuBib = new BibOmdoeper();
         daNuBib.renameBib(fyllingsdalenBib);
         System.out.println(fyllingsdalenBib.getBibNavn());
 

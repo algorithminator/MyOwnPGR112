@@ -1,4 +1,4 @@
-package XtraØkter.Uke4;
+package XtraOekter.Uke4;
 
 import java.util.ArrayList;
 
