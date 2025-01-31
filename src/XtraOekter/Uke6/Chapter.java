@@ -28,4 +28,13 @@ public class Chapter {
     public void setTimeReading(int timeReading) {
         this.timeReading = timeReading;
     }
+
+    @Override
+    public String toString() {
+        return "Chapter{" +
+                "title='" + this.title + '\'' +
+                ", numberOfPages=" + this.numPages +
+                ", readingTime=" + this.timeReading +
+                '}';
+    }
 }
