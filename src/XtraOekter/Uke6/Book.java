@@ -1,10 +1,13 @@
 package XtraOekter.Uke6;
 
+import java.util.ArrayList;
+
 public class Book {
     private String title;
     private String author;
     private int numberOfPages;
     private Genre genre;
+    private ArrayList<Chapter> chapters;
 
     public String getTitle() {
         return title;
@@ -36,6 +39,14 @@ public class Book {
 
     public void setGenre(Genre genre) {
         this.genre = genre;
+    }
+
+    public ArrayList<Chapter> getChapters() {
+        return chapters;
+    }
+
+    public void setChapters(ArrayList<Chapter> chapters) {
+        this.chapters = chapters;
     }
 
     public void printMe() {

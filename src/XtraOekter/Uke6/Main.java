@@ -1,5 +1,7 @@
 package XtraOekter.Uke6;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
         Book b = new Book();
@@ -7,6 +9,7 @@ public class Main {
         b.setTitle("Sult");
         b.setNumberOfPages(111);
         b.setGenre(Genre.CLASSIC);
+        b.setChapters(new ArrayList<>());
         b.printMe();
 
 
@@ -19,6 +22,18 @@ public class Main {
         b.setTitle("Foundation Trilogy");
         b.setNumberOfPages(605);
         b.setGenre(Genre.OTHER);
+        Chapter chapter1 = new Chapter();
+        chapter1.setTitle("Title1");
+        chapter1.setNumPages(20);
+        chapter1.setTimeReading(4);
+        Chapter chapter2 = new Chapter();
+        chapter2.setTitle("Title2");
+        chapter2.setNumPages(25);
+        chapter2.setTimeReading(5);
+        ArrayList<Chapter> chapters = new ArrayList<>();
+        chapters.add(chapter1);
+        chapters.add(chapter2);
+        b.setChapters(chapters);
         b.printMe();
         br.addBook(b);
         System.out.println("Antall books in my Bookregister:" + br.countRegisteredBooks());
