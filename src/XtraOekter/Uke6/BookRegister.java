@@ -9,4 +9,8 @@ public class BookRegister {
         this.registeredBooks.add(b);
     }
 
+    int countRegisteredBooks(){
+        return this.registeredBooks.size();
+    }
+
 }

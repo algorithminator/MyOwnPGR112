@@ -11,6 +11,6 @@ public class Main {
 
         BookRegister br = new BookRegister();
         br.addBook(b);
-
+        System.out.println("Antall books in my Bookregister:" + br.countRegisteredBooks());
     }
 }
