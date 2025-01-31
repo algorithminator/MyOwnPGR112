@@ -3,5 +3,10 @@ package XtraOekter.Uke6;
 import java.util.ArrayList;
 
 public class BookRegister {
-    ArrayList<Book> registeredBooks = new ArrayList<>();
+    private ArrayList<Book> registeredBooks = new ArrayList<>();
+
+    public void addBook(Book b){
+        this.registeredBooks.add(b);
+    }
+
 }

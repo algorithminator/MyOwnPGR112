@@ -8,5 +8,9 @@ public class Main {
         b.setNumberOfPages(111);
         b.setGenre(Genre.CLASSIC);
         b.printMe();
+
+        BookRegister br = new BookRegister();
+        br.addBook(b);
+
     }
 }
