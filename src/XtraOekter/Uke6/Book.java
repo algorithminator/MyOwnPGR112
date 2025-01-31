@@ -60,6 +60,7 @@ public class Book {
                 ", author='" + author + '\'' +
                 ", numberOfPages=" + numberOfPages +
                 ", genre=" + genre +
+                ", chapters=" + chapters +
                 '}';
     }
 }
