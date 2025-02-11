@@ -14,17 +14,20 @@ public class FileReader {
             myScanner = new Scanner(myFile);
             while (myScanner.hasNextLine()){
                 System.out.println(myScanner.nextLine());
-                var x = 4 /0;
+
             }
 
         } catch (FileNotFoundException e) {
             //System.out.println(e);
             System.out.println("Finner ikke filen. Vennligst sjekk stien + fil");
-        } catch (RuntimeException e) {
-            throw new RuntimeException(e);
         }
         finally {
             if (myScanner != null) myScanner.close();
         }
+    }
+    public void otherDummyMethod() throws FileNotFoundException {
+        File myFile = new File("fils/artister.txt");
+
+        Scanner myScanner = new Scanner(myFile);
     }
 }
