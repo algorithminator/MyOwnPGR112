@@ -1,0 +1,6 @@
+Hei
+Hva skjer her?
+Scanner konstrueres på File-objekt .
+File objekt lagrer kun  en representasjon av
+pfad+file-navn som JVM kan tolke.
+Derfor feiler det kun når Scanner ikke klarer å finne Filen.
