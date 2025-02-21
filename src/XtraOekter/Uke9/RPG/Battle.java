@@ -1,5 +1,5 @@
 package XtraOekter.Uke9.RPG;
 
-public interface BattleOpponent {
+public interface Battle {
     public boolean battle(Character opponent);
 }
