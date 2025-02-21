@@ -20,13 +20,23 @@ public abstract class Character {
         this.magicPoints = magicPoints;
     }
 
-    public int calculateFightPoints() {
-        Random randGen = new Random();
-        int myExtraStrength =  this.strength *    randGen.nextInt(this.experiencePoints) ;
-        int myExtraMagic =  this.magicPoints *    randGen.nextInt(this.experiencePoints) ;
-
-        return myExtraMagic + myExtraStrength;
+    public int getStrength() {
+        return strength;
     }
 
+    public int getExperiencePoints() {
+        return experiencePoints;
+    }
 
+    public int getMagicPoints() {
+        return magicPoints;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

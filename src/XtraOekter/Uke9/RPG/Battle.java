@@ -1,5 +1,6 @@
 package XtraOekter.Uke9.RPG;
 
 public interface Battle {
-    public boolean battle(Character opponent);
+    public int calculateFightPoints();
+    public boolean battle(Battle opponent);
 }
