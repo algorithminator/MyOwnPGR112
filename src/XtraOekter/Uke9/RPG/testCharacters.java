@@ -1,17 +1,34 @@
 package XtraOekter.Uke9.RPG;
 
+import java.util.ArrayList;
+
+import static java.lang.Math.min;
+
 public class testCharacters {
 
     public static void main(String[] args) {
         Character gandalf = new Wizard("Gandalf", 5, 3, 8, 9);
         Character saruman = new Wizard("Saruman", 3, 2, 9, 10);
-        Attacker gandalfAttacks = new Attacker(gandalf);
-        System.out.println("Gandalf fights Saruman. Gandalf wins: " + gandalfAttacks.battle(saruman));
+        Character borimir = new Warrior("Borimir", 7, 8, 4, 0);
+        Character snaga = new Ork("Snaga", 5, 2, 3, 1);
+        ArrayList<Character> myParty = new ArrayList<>();
+        ArrayList<Character> enemyParty = new ArrayList<>();
+        myParty.add(gandalf);
+        myParty.add(borimir);
+        enemyParty.add(saruman);
+        enemyParty.add(snaga);
 
-        Character borimir = new Warrior("Borimir", 10, 8, 4, 0);
-        Character snaga = new Ork("Snaga", 3, 2, 3, 1);
-        Attacker borimirAttacks = new Attacker(borimir);
-        System.out.println("Borimir fights Snaga. Borimir wins: " + borimirAttacks.battle(snaga));
+        for (int i = 0 ; i < min(myParty.size(),enemyParty.size()); i++){
+            System.out.println("New round:");
+                           Character myCharacter = myParty.get(i);
+                           Character opponentCharacter = enemyParty.get(i);
+                           Attacker myAttacker = new Attacker(myCharacter);
+                           Defender defenders = new Defender(opponentCharacter);
+                           System.out.printf("%s attacks %s. %s wins: %b \n", myCharacter,opponentCharacter,myCharacter, myAttacker.battle(defenders));
+
+
+        }
+
 
     }
 }
