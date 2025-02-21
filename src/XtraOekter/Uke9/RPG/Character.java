@@ -29,6 +29,4 @@ public abstract class Character {
     }
 
 
-
-    public abstract boolean battle(Character opponent);
 }
