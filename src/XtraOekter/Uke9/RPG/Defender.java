@@ -28,4 +28,21 @@ public class Defender implements Battle{
     public boolean battle(Battle opponent) {
         return false;
     }
+
+    /**
+     * @param i
+     */
+    @Override
+    public void changeHP(int i) {
+        character.changeHealth(i);
+    }
+
+    /**
+     * @param i
+     */
+    @Override
+    public void changeXP(int i) {
+        character.changeXP(i);
+
+    }
 }

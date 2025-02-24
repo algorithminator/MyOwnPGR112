@@ -27,6 +27,9 @@ public abstract class Character {
     public int getExperiencePoints() {
         return experiencePoints;
     }
+    public void changeXP(int i){
+        experiencePoints = experiencePoints + i;
+    }
 
     public int getMagicPoints() {
         return magicPoints;
@@ -36,12 +39,16 @@ public abstract class Character {
         return health;
     }
 
+    public void changeHealth(int i){
+        health = health + i;
+    }
+
     public String getName() {
         return name;
     }
 
     @Override
     public String toString() {
-        return getName();
+        return getName()+ "/health " + getHealth();
     }
 }
