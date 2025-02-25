@@ -22,11 +22,11 @@ public class testCharacters {
             System.out.println("New round:");
                            Character myCharacter = myParty.get(i);
                            Character opponentCharacter = enemyParty.get(i);
-                           Attacker myAttacker = new Attacker(myCharacter);
-                           Defender defenders = new Defender(opponentCharacter);
+                           Battle myFighter = new Attacker(myCharacter);
+                           Battle opponentFighter = new Defender(opponentCharacter);
                            System.out.printf("%s attacks %s. ", myCharacter,opponentCharacter);
-                           boolean battleOutcome =   myAttacker.battle(defenders);
-                           System.out.printf("%s wins: %b \n", myCharacter,opponentCharacter,myCharacter, battleOutcome);
+                           boolean battleOutcome =   myFighter.battle(opponentFighter);
+                           System.out.printf("%s wins: %b \n", myCharacter, battleOutcome);
 
 
         }

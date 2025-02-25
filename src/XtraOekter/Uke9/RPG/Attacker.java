@@ -15,7 +15,7 @@ public class Attacker implements Battle{
     }
 
     public boolean battle(Battle opponent){
-        // ork fight dirty
+
         int fpointsAttacker = this.calculateFightPoints();
         int fpointsDefender = opponent.calculateFightPoints();
         System.out.println("Fightpoints " +character.getName() + " : " + fpointsAttacker);
