@@ -24,7 +24,9 @@ public class testCharacters {
                            Character opponentCharacter = enemyParty.get(i);
                            Attacker myAttacker = new Attacker(myCharacter);
                            Defender defenders = new Defender(opponentCharacter);
-                           System.out.printf("%s attacks %s. %s wins: %b \n", myCharacter,opponentCharacter,myCharacter, myAttacker.battle(defenders));
+                           System.out.printf("%s attacks %s. ", myCharacter,opponentCharacter);
+                           boolean battleOutcome =   myAttacker.battle(defenders);
+                           System.out.printf("%s wins: %b \n", myCharacter,opponentCharacter,myCharacter, battleOutcome);
 
 
         }
