@@ -12,6 +12,10 @@ public abstract class Character {
     private int experiencePoints;
     public static int characterCount;
 
+    static{
+        System.out.println("Vellkommen til mini-RPG");
+    }
+
 
     public Character(String name, int strength, int health, int experiencePoints){
         this.name = name;
