@@ -57,16 +57,26 @@ public class playRPG {
         System.out.println("TOTAL FIGHT POWER PARTY1: " + totalFP1);
 
         //alt 2;: stream + lambda expression + autoboxing
-        totalFP1 = party1.stream().map(m -> m.calculateFp()).mapToInt(i->i.intValue()).sum();
+        totalFP1 = party1.stream()
+                .map(m -> m.calculateFp())
+                .mapToInt(i->i.intValue())
+                .sum();
         System.out.println("TOTAL FIGHT POWER PARTY1: " + totalFP1);
 
 
         //alt 3: stream + method referencing
-        totalFP1 = party1.stream().map(Character::calculateFp).mapToInt(Integer::intValue).sum();
+        totalFP1 = party1.stream()
+                .map(Character::calculateFp)
+                .mapToInt(Integer::intValue)
+                .sum();
         System.out.println("TOTAL FIGHT POWER PARTY1: " + totalFP1);
 
 
-        int totalFP2 = party2.stream().map(Character::calculateFp).mapToInt(Integer::intValue).sum();
+        int totalFP2 = party2.stream()
+                .map(Character::calculateFp)
+                .mapToInt(Integer::intValue)
+                .sum();
+
         System.out.println("TOTAL FIGHT POWER PARTY2: " + totalFP2);
 
         System.out.println("PARTY 1 wins: " + (totalFP1 >=totalFP2));
