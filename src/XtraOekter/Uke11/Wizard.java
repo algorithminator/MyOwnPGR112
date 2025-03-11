@@ -21,7 +21,7 @@ public class Wizard extends Character {
         Random randGen = new Random();
         int myExtraStrength =  super.getStrength() *    randGen.nextInt(super.getXp()) ;
         int myExtraMagic =  this.mp *    randGen.nextInt(super.getXp()) ;
-
+        System.out.println("Wizard " + this.getName() + " has Xtra MP: " + myExtraMagic);
         return  myExtraStrength+myExtraMagic;
     }
 

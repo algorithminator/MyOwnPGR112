@@ -6,6 +6,15 @@ public abstract class Character {
 
     private String name;
     private int strength;
+
+    public int getHealth() {
+        return health;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     private int health;
     private int xp;
     private static int characterCount;
