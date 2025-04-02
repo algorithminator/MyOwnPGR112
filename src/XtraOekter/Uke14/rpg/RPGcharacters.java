@@ -14,6 +14,10 @@ public class RPGcharacters {
     private static final String DELETE_RPG_SQL = "DELETE FROM RPGcharacter WHERE name =?";
     private static final String INSERT_RPG_SQL = "INSERT INTO RPGcharacter (name,type,strength, health, xp, mp) VALUES(?,?,?,?,?,?)";
 
+    public MysqlDataSource getRpgDS() {
+        return rpgDS;
+    }
+
     public RPGcharacters(){
         rpgDS = new MysqlDataSource();
         rpgDS.setServerName(PROPS.getProperty("host"));
@@ -68,9 +72,8 @@ public class RPGcharacters {
         }
     return rpgCharacters;
     }
-    public int updateRPGCharacters(Character c) throws SQLException {
-        try (Connection con = rpgDS.getConnection();
-             PreparedStatement statement = con.prepareStatement(UPDATE_RPG_SQL);
+    public int updateRPGCharacters(Character c, Connection con) throws SQLException {
+        try (PreparedStatement statement = con.prepareStatement(UPDATE_RPG_SQL);
         ) {
             statement.setInt(1, c.getStrength());
             statement.setInt(2, c.getHealth());
@@ -104,9 +107,8 @@ public class RPGcharacters {
         }
     }
 
-    public int deleteRPGCharacter(Character c) throws SQLException {
-        try (Connection con = rpgDS.getConnection();
-             PreparedStatement statement = con.prepareStatement(DELETE_RPG_SQL);
+    public int deleteRPGCharacter(Character c, Connection con) throws SQLException {
+        try (PreparedStatement statement = con.prepareStatement(DELETE_RPG_SQL);
         ) {
             statement.setString(1, c.getName());
             return statement.executeUpdate();
