@@ -1,0 +1,91 @@
+package XtraOekter.Uke14.rpg;
+
+import com.mysql.cj.jdbc.MysqlDataSource;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import static XtraOekter.Uke13.PropertiesProvider.PROPS;
+
+public class RPGcharacters {
+    private final MysqlDataSource rpgDS;
+    private static final String UPDATE_RPG_SQL = "UPDATE RPGcharacter SET strength=?, health=?, xp=? WHERE name=?";
+    private static final String DELETE_RPG_SQL = "DELETE FROM RPGcharacter WHERE name =?";
+
+    public RPGcharacters(){
+        rpgDS = new MysqlDataSource();
+        rpgDS.setServerName(PROPS.getProperty("host"));
+        rpgDS.setPortNumber(Integer.parseInt(PROPS.getProperty("port")));
+        rpgDS.setDatabaseName(PROPS.getProperty("db_name"));
+        rpgDS.setUser(PROPS.getProperty("uname"));
+        rpgDS.setPassword(PROPS.getProperty("pwd"));
+    }
+    public List<Character> loadFromSQL(){
+        List<Character> rpgCharacters = new ArrayList<>();
+        try (Connection con = rpgDS.getConnection();
+             Statement statement = con.createStatement();
+             ResultSet rs = statement.executeQuery("SELECT character_id,name,type,strength, health, xp, mp FROM RPGcharacter")){
+
+            while(rs.next()){
+                //(name, type, strength, health, xp, mp)
+                int id = rs.getInt("character_id");
+                String name = rs.getString("name");
+                String type = rs.getString("type");
+                //System.out.println(name+ " "+ type);
+                int strength = rs.getInt("strength");
+                int health = rs.getInt("health");
+                int xp = rs.getInt("xp");
+                int mp = rs.getInt("mp");
+
+                switch(type.toLowerCase()){
+                    case "warrior":
+                        Warrior wa = new Warrior(name, strength, health, xp);
+                        rpgCharacters.add(wa);
+                        break;
+                    case "wizard":
+                        Wizard wi = new Wizard(name, strength, health, xp, mp);
+                        rpgCharacters.add(wi);
+                        break;
+                    case "ork":
+                        Ork o = new Ork(name);
+                        rpgCharacters.add(o);
+                        break;
+                    default:
+                        System.out.println("Wrong type of character in DB.");
+                        break;
+
+
+
+                }
+
+            }
+
+        } catch(SQLException e){
+            System.out.println("Unable to connect to database:"+e.getMessage());
+            e.printStackTrace();
+        }
+    return rpgCharacters;
+    }
+    public int updateRPGCharacters(Character c) throws SQLException {
+        try (Connection con = rpgDS.getConnection();
+             PreparedStatement statement = con.prepareStatement(UPDATE_RPG_SQL);
+        ) {
+            statement.setInt(1, c.getStrength());
+            statement.setInt(2, c.getHealth());
+            statement.setInt(3, c.getXp());
+            statement.setString(4, c.getName());
+
+            return statement.executeUpdate();
+        }
+    }
+
+    public int deleteRPGCharacter(Character c) throws SQLException {
+        try (Connection con = rpgDS.getConnection();
+             PreparedStatement statement = con.prepareStatement(DELETE_RPG_SQL);
+        ) {
+            statement.setString(1, c.getName());
+            return statement.executeUpdate();
+        }
+    }
+}
