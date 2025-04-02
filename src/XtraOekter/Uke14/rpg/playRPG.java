@@ -14,8 +14,12 @@ public class playRPG {
     public static void main(String[] args) throws SQLException {
         System.out.println("Antall characters in play: " + Character.getCharacterCount());
 
-        // last inn character fra db
         RPGcharacters rp = new RPGcharacters();
+        // insert en ny character med auto increment
+        Wizard w = new Wizard("Turdor", 3,3,3,2);
+        rp.addRPGCharacter(w, "WIZARD");
+
+        // last inn character fra db
         List<Character> allPlayers =  rp.loadFromSQL();
 
         Collection<Character> party1 = new HashSet<>();
