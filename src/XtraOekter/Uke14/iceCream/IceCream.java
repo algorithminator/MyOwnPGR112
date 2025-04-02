@@ -12,10 +12,17 @@ public class IceCream {
 
     public void getIceCream(String iceSort) {
             System.out.println(iceSort +" ice cream , please!");
-            int getOneCone = this.iceStash.get(iceSort);
-            if(getOneCone == 1) this.iceStash.remove(iceSort);
-            else this.iceStash.replace(iceSort, getOneCone-1) ;
-            System.out.println("Here you are!");
+
+            try {
+                int getOneCone = this.iceStash.get(iceSort);
+                if (getOneCone == 1) this.iceStash.remove(iceSort);
+                else this.iceStash.replace(iceSort, getOneCone - 1);
+                System.out.println("Here you are!");
+            }
+            catch(NullPointerException e){
+                System.out.println("We don't have any, sorry.");
+                
+        }
 
     }
 }
