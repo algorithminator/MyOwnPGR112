@@ -12,6 +12,7 @@ public class RPGcharacters {
     private final MysqlDataSource rpgDS;
     private static final String UPDATE_RPG_SQL = "UPDATE RPGcharacter SET strength=?, health=?, xp=? WHERE name=?";
     private static final String DELETE_RPG_SQL = "DELETE FROM RPGcharacter WHERE name =?";
+    private static final String INSERT_RPG_SQL = "INSERT INTO RPGcharacter (name,type,strength, health, xp, mp) VALUES(?,?,?,?,?,?)";
 
     public RPGcharacters(){
         rpgDS = new MysqlDataSource();
@@ -77,6 +78,29 @@ public class RPGcharacters {
             statement.setString(4, c.getName());
 
             return statement.executeUpdate();
+        }
+    }
+    public int addRPGCharacter(Character c, String cType) throws SQLException {
+
+        try (Connection conn = rpgDS.getConnection();
+             PreparedStatement statement = conn.prepareStatement(INSERT_RPG_SQL, Statement.RETURN_GENERATED_KEYS)
+        ) {
+
+            statement.setString(1, c.getName());
+            statement.setString(2, cType);
+            statement.setInt(3, c.getStrength());
+            statement.setInt(4, c.getHealth());
+            statement.setInt(5, c.getXp());
+            statement.setInt(6, c.getXp());
+            int rowsAffected = statement.executeUpdate();
+            if(rowsAffected == 1){
+                try(ResultSet keys = statement.getGeneratedKeys()){
+                    if(keys.next()){
+                        return keys.getInt(1);
+                    }
+                }
+            }
+            return 0;
         }
     }
 
