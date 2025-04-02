@@ -55,9 +55,7 @@ public abstract class Character {
         return strength;
     }
 
-    public String getName() {
-        return name;
-    }
+
 
     public static int getCharacterCount() {
         return characterCount;
