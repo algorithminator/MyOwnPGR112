@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
-public class PlayRPG implements BattleField {
+public class RPG implements BattleField {
 
     public void printPartyStrength(Collection<Character>party) {
         //alternative 2: use functional interface with lambda-expression
