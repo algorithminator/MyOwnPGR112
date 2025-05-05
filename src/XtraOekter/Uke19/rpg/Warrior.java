@@ -1,4 +1,4 @@
-package XtraOekter.Uke15.rpg;
+package XtraOekter.Uke19.rpg;
 
 public class Warrior extends Character {
     public Warrior(String name, int strength, int health, int xp){

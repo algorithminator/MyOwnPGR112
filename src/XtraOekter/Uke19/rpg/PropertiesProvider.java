@@ -1,4 +1,4 @@
-package XtraOekter.Uke15.rpg;
+package XtraOekter.Uke19.rpg;
 
 import java.io.FileInputStream;
 import java.io.IOException;
