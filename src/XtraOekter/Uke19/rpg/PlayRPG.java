@@ -11,13 +11,7 @@ import java.util.List;
 
 public class PlayRPG implements BattleField {
 
-    public void printPartStrength_Alt1(Collection<Character> party) {
-
-        // alternative 1 enhanced for-loop
-        for (Character m : party) System.out.println(m.getName() + " has health points : " + m.getHealth());
-    }
-
-    public void printPartStrength_Alt2(Collection<Character>party) {
+    public void printPartyStrength(Collection<Character>party) {
         //alternative 2: use functional interface with lambda-expression
         party.forEach(m -> System.out.println(m.getName() + " has health points: " + m.getHealth()));
 
@@ -25,7 +19,7 @@ public class PlayRPG implements BattleField {
     }
 
     //new battle-mechanics: calculate total fight points of party . who has most , wins.
-    public int calulateFpParty_Alt1(Collection<Character> party) {
+    public int calculateFightPointsParty(Collection<Character> party) {
         // alt 1:
         int totalFP = 0;
         for (Character m : party) {
@@ -39,8 +33,8 @@ public class PlayRPG implements BattleField {
 
     public boolean battle(Collection<Character> party1, Collection<Character> party2){
 
-        int totalFp1 = this.calulateFpParty_Alt1(party1);
-        int totalFp2 = this.calulateFpParty_Alt1(party2);
+        int totalFp1 = this.calculateFightPointsParty(party1);
+        int totalFp2 = this.calculateFightPointsParty(party2);
         System.out.println("TOTAL FIGHT POWER PARTY 1: " + totalFp1);
         System.out.println("TOTAL FIGHT POWER PARTY 2: " + totalFp2);
 
@@ -110,9 +104,9 @@ public class PlayRPG implements BattleField {
         //BattleField bf = new BattleField();
 
         System.out.println("Party 1 members:");
-        this.printPartStrength_Alt1(party1);
+        this.printPartyStrength(party1);
         System.out.println("Party 2 members:");
-        this.printPartStrength_Alt2(party2);
+        this.printPartyStrength(party2);
 
         // bruk transakjoner - commit , rollback
         MysqlDataSource rpgDS = rp.getRpgDS();
@@ -123,12 +117,12 @@ public class PlayRPG implements BattleField {
         try {
             boolean fightLoop = true;
             while (fightLoop) {
-                if (party1.size() == 0) fightLoop = false;
-                if (party2.size() == 0) fightLoop = false;
+                if (party1.isEmpty()) fightLoop = false;
+                if (party2.isEmpty()) fightLoop = false;
                 System.out.println("Party 1 members:");
-                printPartStrength_Alt1(party1);
+                this.printPartyStrength(party1);
                 System.out.println("Party 2 members:");
-                printPartStrength_Alt2(party2);
+                this.printPartyStrength(party2);
                 System.out.println("PARTY 1 wins this fight: " + this.battle(party1, party2));
 
                 for (Character c : allPlayers) rp.updateRPGCharacters(c, con);
