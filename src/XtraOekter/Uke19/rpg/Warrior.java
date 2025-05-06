@@ -5,8 +5,4 @@ public class Warrior extends Character {
         super(name,strength,health,xp);
     }
 
-    @Override
-    public boolean battle(Character opponent) {
-        return this.calculateFp() >= opponent.calculateFp();
-    }
 }

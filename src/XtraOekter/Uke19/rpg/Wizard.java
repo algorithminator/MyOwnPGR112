@@ -25,10 +25,4 @@ public class Wizard extends Character {
         return  myExtraStrength+myExtraMagic;
     }
 
-    @Override
-    public boolean battle(Character opponent) {
-
-        return this.calculateFp() >= opponent.calculateFp();
-
-    }
 }

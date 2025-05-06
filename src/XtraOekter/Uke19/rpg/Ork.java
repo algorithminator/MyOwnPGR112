@@ -6,8 +6,5 @@ public class Ork extends Character {
         super(name);
     }
 
-    @Override
-    public boolean battle(Character opponent) {
-        return false;
-    }
+
 }

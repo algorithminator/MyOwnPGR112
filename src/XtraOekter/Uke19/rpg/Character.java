@@ -46,7 +46,6 @@ public abstract class Character {
         return myFightPower;
 
     }
-    public abstract boolean battle(Character opponent);
 
     public int getXp() {
         return xp;
